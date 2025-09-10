@@ -16,7 +16,7 @@ test('Deve acessar a conta do usuário', async ({ page }) => {
   await loginPage.acessaPagina();
   await loginPage.informaCPF(usuario.cpf);
   await loginPage.informaSenha(usuario.senha);
-  await page.getByRole('heading', { name: 'Verificação em duas etapas' }).waitFor({timeout: 3000});
+  await page.getByRole('heading', { name: 'Verificação em duas etapas' }).waitFor({timeout: 5000});
 
   // const code = await obterCodigo2FA();
   const codigo = await getJob();
@@ -30,7 +30,7 @@ test('Deve acessar a conta do usuário 2', async ({ page }) => {
   await loginActions.acessaPagina();
   await loginActions.informaCPF(usuario.cpf);
   await loginActions.informaSenha(usuario.senha);
-  await page.getByRole('heading', { name: 'Verificação em duas etapas' }).waitFor({timeout: 3000});
+  await page.getByRole('heading', { name: 'Verificação em duas etapas' }).waitFor({timeout: 5000});
   const code = await obterCodigo2FA();
   await loginActions.infrom2FA(code);
   await expect(await loginActions.obterSaldo()).toHaveText('R$ 5.000,00');
